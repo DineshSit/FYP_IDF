@@ -29,7 +29,7 @@ public class ImageManager {
             //+ "AccountKey=[QJbltd89LvFz1D5A4vxTgtSA1Jh7bFt9UBz5bbS2s1fB1tJTa8lytr3QR0XgdqGXGvh3QQzAFjLdRZU7lqbV4A==];"
 
 
-
+    // testing
     //DefaultEndpointsProtocol=https;
     //AccountName=idfimages;
     //AccountKey=QJbltd89LvFz1D5A4vxTgtSA1Jh7bFt9UBz5bbS2s1fB1tJTa8lytr3QR0XgdqGXGvh3QQzAFjLdRZU7lqbV4A==;
