@@ -61,7 +61,7 @@ public class addPhoto extends AppCompatActivity {
         startActivityForResult(intent, IMAGE_PICK_CODE);
     }
 
-    //handle result of runtime permission
+    //handle result of runtime permissions
     /*@Override
     public void onRequestPermissionResult(int requestCode, @NonNull String[] permissions, @NonNull int ){
         switch (requestCode){

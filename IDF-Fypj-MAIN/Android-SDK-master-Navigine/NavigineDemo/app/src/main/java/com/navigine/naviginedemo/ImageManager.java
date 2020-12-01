@@ -31,7 +31,7 @@ public class ImageManager {
 
 
     //DefaultEndpointsProtocol=https;
-    //AccountName=idfphotos;
+    //AccountName=idfimages;
     //AccountKey=QJbltd89LvFz1D5A4vxTgtSA1Jh7bFt9UBz5bbS2s1fB1tJTa8lytr3QR0XgdqGXGvh3QQzAFjLdRZU7lqbV4A==;
     //EndpointSuffix=core.windows.net
     private static CloudBlobContainer getContainer() throws Exception {
