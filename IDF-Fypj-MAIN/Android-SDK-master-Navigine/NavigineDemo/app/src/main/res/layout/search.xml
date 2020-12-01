@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/elm_splash"
+    android:orientation="vertical">
+
+
+<!--    <TextView-->
+<!--        android:id="@+id/searchdebug"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:textColor="#BD2525"-->
+<!--        android:visibility="visible"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.132" />-->
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5sp"
+
+        android:layout_margin="10sp"
+        android:orientation="horizontal">
+
+        <Button
+
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:background="@drawable/redround"
+            android:onClick="Back"
+            android:text="Back"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:layout_marginLeft="10sp"
+            android:background="@drawable/blueround"
+            android:onClick="History"
+            android:text="History" />
+
+    </LinearLayout>
+
+
+
+
+
+
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_margin="10sp"
+        android:background="#FFFFFF"
+        android:fontFamily="@font/aldrich"
+        android:text="Destination 1 :"
+        android:textColor="#000000" />
+
+    <Spinner
+        android:id="@+id/spinner1"
+        android:layout_width="222dp"
+        android:layout_height="43dp"
+        android:background="@drawable/spinnerui"
+
+        android:text="Select" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_margin="10sp"
+        android:background="#FFFFFF"
+        android:fontFamily="@font/aldrich"
+        android:text="Destination 2 :"
+        android:textColor="#000000" />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="222dp"
+        android:layout_height="43dp"
+        android:background="@drawable/spinnerui"
+
+        android:text="Select" />
+
+    <Button
+
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+
+        android:layout_margin="10sp"
+        android:background="@drawable/greenround"
+        android:fontFamily="@font/hammersmith_one"
+        android:onClick="Search"
+        android:text="Search"
+        android:textSize="18sp" />
+
+
+    <Button
+        android:layout_width="154dp"
+        android:layout_height="38dp"
+        android:layout_margin="5sp"
+        android:background="@drawable/bluepurpleround"
+        android:fontFamily="@font/hammersmith_one"
+        android:onClick="Shortcut"
+        android:text="Add shortcut"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="191dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:fontFamily="@font/hammersmith_one"
+        android:text="Shortcuts"
+        android:textAllCaps="true"
+        android:textColor="#000000"
+        android:textSize="30dp"
+        android:textStyle="bold|italic" />
+
+    <ListView
+        android:id="@+id/listVenue"
+        android:layout_width="match_parent"
+        android:layout_height="246dp" />
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/elm_splash"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/Btn_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10sp"
+        android:background="@drawable/redround"
+        android:onClick="back"
+        android:text="Back"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/AddList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="270dp"
+        android:paddingBottom="10sp"
+        android:text="   There is Noting added to this list." />
+
+    <Button
+        android:id="@+id/Btn_add"
+        android:layout_width="117dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/blueround"
+        android:fontFamily="@font/hammersmith_one"
+        android:onClick="add"
+        android:text="Add"
+        android:textColor="#181E47"
+        android:textSize="24sp" />
+
+
+</LinearLayout>

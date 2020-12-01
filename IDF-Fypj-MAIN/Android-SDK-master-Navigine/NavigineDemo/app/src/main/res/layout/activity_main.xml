@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#14273D">
+
+    <!-- Main layout -->
+    <FrameLayout android:id="@+id/navigation__main_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+
+        <com.navigine.naviginesdk.LocationView
+            android:id="@+id/navigation__location_view"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+
+            <TextView
+                android:id="@+id/navigation__error_message_label"
+                android:layout_width="fill_parent"
+                android:layout_height="70dp"
+                android:layout_gravity="bottom|left"
+                android:background="#9ACD2929"
+                android:gravity="center"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:textColor="#ffffff"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/tvLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                android:visibility="invisible"
+                android:textColor="#FFFFFF" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/debuglocate"
+                    android:layout_width="123dp"
+                    android:layout_height="23dp"
+                    android:textColor="#BD2525"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.468"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.navigine.naviginesdk.LocationView>
+
+            <LinearLayout
+                android:id="@+id/menu"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:paddingTop="20dp">
+                <!--
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_width="189dp"
+                android:layout_height="43dp"
+                android:text="Select"
+
+
+                />-->
+
+                <Button
+
+                    android:id="@+id/btnGoToSearch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/greenround"
+                    android:fontFamily="@font/hammersmith_one"
+                    android:onClick="Search_Btn"
+                    android:text="GO!"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="#000000"
+                    android:textColorHighlight="#0B0909"
+
+
+                    android:textSize="18sp" />
+
+                <Button
+
+                    android:id="@+id/btnGotoLocation"
+                    android:layout_width="109dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/greenround"
+                    android:fontFamily="@font/hammersmith_one"
+                    android:text="MEET UP"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="#000000"
+                    android:textColorHighlight="#0B0909"
+
+
+                    android:textSize="18sp" />
+
+                <Button
+
+                    style="@style/Widget.AppCompat.Button"
+                    android:layout_width="130dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/blueround"
+                    android:onClick="ClickVenueList"
+                    android:text="SELECT"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+                <Button
+
+                    android:id="@+id/btnActivateScanner"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/qrcodescanner"
+                    android:fontFamily="@font/hammersmith_one"
+                    android:onClick="Search_Btn"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                    android:textColor="#000000"
+
+
+                    android:textColorHighlight="#0B0909"
+                    android:textSize="18sp" />
+
+
+            </LinearLayout>
+
+
+
+        <TextView android:id="@+id/navigation__info_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_marginBottom="10dp"
+            android:background="#EC7703"
+            android:textSize="16dp"
+            android:textColor="#000000"/>
+
+
+
+        <!-- Previous floor button -->
+        <LinearLayout
+            android:id="@+id/navigation__back_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|left"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="80dp"
+            android:background="#B3FAFAFA"
+            android:onClick="onCancelRoute"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="0dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp">
+
+
+            <Button
+                android:id="@+id/navigation__back_button"
+                android:layout_width="30dp"
+                android:layout_height="26dp"
+                android:layout_gravity="center"
+                android:background="@drawable/cancel"
+                android:onClick="onCancelRoute" />
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Tap here to cancel route"
+                android:textColor="#556475"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/navigation__map_view"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|left"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="160dp"
+            android:background="#B3FAFAFA"
+            android:onClick="onMap"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="0dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp">
+
+            <Button
+                android:id="@+id/navigation__map_button"
+                android:layout_width="30dp"
+                android:layout_height="26dp"
+                android:layout_gravity="center"
+                android:background="@drawable/locate"
+                android:onClick="onMap" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Tap here to go back to map"
+                android:textColor="#556475"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/Next_destination"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|left"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="120dp"
+            android:background="#B3FAFAFA"
+            android:onClick="onNextRoute"
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="0dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp">
+
+            <Button
+                android:id="@+id/Next_destination_button"
+                android:layout_width="30dp"
+                android:layout_height="26dp"
+                android:layout_gravity="center"
+                android:background="@drawable/confirm"
+                android:onClick="onNextRoute" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Tap here to go to the next Destination"
+                android:textColor="#556475"
+                android:textSize="20dp" />
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_gravity="top|right"
+            android:layout_marginTop="210dp"
+            android:layout_marginRight="15dp">
+
+            <!-- Previous floor button -->
+            <RelativeLayout android:id="@+id/navigation__prev_floor_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#90aaaaaa">
+
+                <Button
+                    android:id="@+id/navigation__next_floor_button"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/nextfloor"
+                    android:onClick="onNextFloor" />
+            </RelativeLayout>
+
+            <!-- Current floor label -->
+            <TextView
+                android:id="@+id/navigation__current_floor_label"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="#90dddddd"
+                android:fontFamily="@font/fugaz_one"
+                android:gravity="center"
+                android:textColor="#0B53BD"
+                android:textSize="30sp" />
+
+            <!-- Next floor button -->
+            <FrameLayout android:id="@+id/navigation__next_floor_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#90aaaaaa">
+
+                <Button
+                    android:id="@+id/navigation__prev_floor_button"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/previousfloor"
+                    android:onClick="onPrevFloor" />
+            </FrameLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <!-- Zoom in button -->
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="10dp"/>
+
+            <FrameLayout android:id="@+id/navigation__zoom_in_view"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/zoom_button_circular">
+                <!--android:background="#90aaaaaa">-->
+
+                <Button
+                    android:id="@+id/navigation__zoom_in_button"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/plus"
+                    android:onClick="onZoomIn" />
+
+            </FrameLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="10dp"/>
+
+            <!-- Zoom out button -->
+
+            <FrameLayout android:id="@+id/navigation__zoom_out_view"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/zoom_button_circular">
+
+                <Button
+                    android:id="@+id/navigation__zoom_out_button"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/minus"
+                    android:onClick="onZoomOut" />
+            </FrameLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="10dp"/>
+
+            <Button
+                android:id="@+id/btnTest"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/refresh"
+                android:onClick="toggleAdjustMode" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="10dp"/>
+
+            <Button
+                android:id="@+id/rotate"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/rotate"
+                android:onClick="turnMap" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/guide"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/question"
+                android:layout_marginBottom="50dp"
+                android:onClick="guideButton" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="80dp"/>
+
+            <RelativeLayout android:id="@+id/navigation__adjust_mode_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/zoom_button_circular">
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </FrameLayout> <!-- Main layout -->
+
+</RelativeLayout>
