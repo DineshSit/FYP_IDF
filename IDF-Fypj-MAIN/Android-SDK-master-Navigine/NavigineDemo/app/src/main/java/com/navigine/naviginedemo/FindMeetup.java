@@ -50,9 +50,9 @@ public class FindMeetup extends AppCompatActivity {
         mHeadToMeetUp=findViewById(R.id.btnHeadToMeetup);
         mSearchUser=findViewById(R.id.txtSearch);
         mCreateMeetup=findViewById(R.id.tvCreateMeetUp);
-mMyMeetUp=findViewById(R.id.btnGoToMyMeetups);
-mTest=findViewById(R.id.tvTest);
-mHeadToMeetUp.setVisibility(View.GONE);
+        mMyMeetUp=findViewById(R.id.btnGoToMyMeetups);
+        mTest=findViewById(R.id.tvTest);
+        mHeadToMeetUp.setVisibility(View.GONE);
         sp=getSharedPreferences("MyUserProfile",MODE_PRIVATE);
 
         String[]search_History=getResources().getStringArray(R.array.search_History);

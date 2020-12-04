@@ -34,10 +34,10 @@
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.139"
+        app:layout_constraintHorizontal_bias="0.092"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ListView"
-        app:layout_constraintVertical_bias="0.087" />
+        app:layout_constraintVertical_bias="0.092" />
 
     <Button
         android:id="@+id/tvSetting"
@@ -49,10 +49,10 @@
         android:textColor="#F4F4F4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.916"
+        app:layout_constraintHorizontal_bias="0.891"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ListView"
-        app:layout_constraintVertical_bias="0.087" />
+        app:layout_constraintVertical_bias="0.092" />
 
     <ListView
         android:id="@+id/ListView"
@@ -102,16 +102,17 @@
 
     <Button
         android:id="@+id/btnRecommend"
+        style="@android:style/Widget.DeviceDefault.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="91dp"
-        android:background="@android:color/holo_orange_light"
+        android:layout_marginTop="89dp"
+        android:background="@drawable/blueround"
         android:text="Recommend"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/tvGoToFindMeetUp"
         app:layout_constraintEnd_toStartOf="@+id/tvSetting"
-        app:layout_constraintHorizontal_bias="0.519"
         app:layout_constraintStart_toEndOf="@+id/btnShareLocation"
         app:layout_constraintTop_toBottomOf="@+id/ListView"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
