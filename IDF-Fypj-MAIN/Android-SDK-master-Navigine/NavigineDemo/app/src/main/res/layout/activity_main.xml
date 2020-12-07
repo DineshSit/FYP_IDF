@@ -119,7 +119,7 @@
                     android:layout_height="match_parent"
                     android:background="@drawable/blueround"
                     android:onClick="ClickVenueList"
-                    android:text="SELECT"
+                    android:text="MENU"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="#000000"
                     android:textSize="18sp" />
