@@ -55,6 +55,7 @@ public class Rating1 extends AppCompatActivity {
     DatabaseReference ref;
     Feedback feedback; // get,set class
     ListView listView;
+    Spinner spinner;
     FirebaseDatabase database;
     String setLocation1;
     static final String TAG = "NAVIGINE.Demo";
@@ -73,6 +74,7 @@ public class Rating1 extends AppCompatActivity {
         FeedMessage = (EditText) findViewById(R.id.FeedMessage);
         ratingbar1 = (RatingBar) findViewById(R.id.ratingBar1);
         SendFeed = (Button) findViewById(R.id.sendFeed);
+        //spinner = (Spinner) findViewById(R.id.spinnerLoc);
 
         //display list of venues from db on listview
         SharedPreferences sp=getApplicationContext().getSharedPreferences("MyUserProfile", Context.MODE_PRIVATE);
@@ -96,6 +98,7 @@ public class Rating1 extends AppCompatActivity {
         });
 
         adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1, list);
+        //adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

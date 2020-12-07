@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
@@ -26,16 +27,17 @@
         android:textColor="#000000"
         android:textSize="18sp"/>
 
-    <!--<Spinner
-        android:id="@+id/spinnerLoc"
-        android:layout_width="222dp"
-        android:layout_height="43dp"
-        android:text="Select"/>-->
+<!--    <Spinner-->
+<!--        android:id="@+id/spinnerLoc"-->
+<!--        android:layout_width="222dp"-->
+<!--        android:layout_height="43dp"-->
+<!--        android:text="Select"-->
+<!--        tools:listitem="@android:layout/simple_spinner_dropdown_item"/>-->
 
     <ListView
         android:id="@+id/ListViewLoc"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="93dp"
         tools:listitem="@android:layout/simple_list_item_1" />
 
     <TextView
@@ -53,6 +55,19 @@
         android:clickable="true"
         android:numStars="5" />
 
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="pic" />
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:srcCompat="@tools:sample/avatars" />
+
     <TextView
         android:id="@+id/textView4"
         android:layout_width="match_parent"
@@ -64,7 +79,7 @@
     <EditText
         android:id="@+id/FeedMessage"
         android:layout_width="match_parent"
-        android:layout_height="117dp"
+        android:layout_height="63dp"
         android:hint="Share details of own experience at this place" />
 
     <Button
