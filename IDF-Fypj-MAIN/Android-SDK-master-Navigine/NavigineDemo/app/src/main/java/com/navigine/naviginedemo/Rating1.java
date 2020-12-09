@@ -1,10 +1,15 @@
 package com.navigine.naviginedemo;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.SparseLongArray;
@@ -13,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.Spinner;
@@ -20,6 +26,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.database.ChildEventListener;
@@ -60,15 +67,28 @@ public class Rating1 extends AppCompatActivity {
     String setLocation1;
     static final String TAG = "NAVIGINE.Demo";
     long maxid=0;
+    private static final int SELECT_IMAGE = 100;
 
     ArrayList<String> list = new ArrayList<>();
     ArrayAdapter<String> adapter;
+
+    ImageView ivImage;
+    Integer REQUEST_CAMERA=1, SELECT_FILE=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rating1); // link java to xml
+        // iMAGE
+        ivImage = (ImageView) findViewById(R.id.imageView9);
 
+       Button  pic = (Button) findViewById(R.id.button2);
+       pic.setOnClickListener(new View.OnClickListener(){
+           @Override
+           public  void  onClick(View view){
+               SelectImage();
+           }
+       });
         //user variable
         listView = (ListView) findViewById(R.id.ListViewLoc) ;
         FeedMessage = (EditText) findViewById(R.id.FeedMessage);
@@ -173,6 +193,51 @@ public class Rating1 extends AppCompatActivity {
                         Toast.makeText(Rating1.this, "Review submitted!", Toast.LENGTH_LONG).show();
                     }
                 });
+    }
+
+    private void  SelectImage(){
+        final CharSequence[] items = {"Camera","Gallery", "Cancel "};
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(Rating1.this);
+        builder.setTitle("Add Image");
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if(items[i].equals("Camera")){
+                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                    startActivityForResult(intent, REQUEST_CAMERA);
+                } else if (items[i].equals("Gallery")){
+//                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//                    intent.setType("images/*");
+//                    startActivityForResult(intent.createChooser(intent, "Select File"), SELECT_FILE);
+                    Intent intent = new Intent();
+                    intent.setType("image/*");
+                    intent.setAction(Intent.ACTION_GET_CONTENT);
+                    startActivityForResult(Intent.createChooser(intent, "Select Picture"), SELECT_IMAGE);
+                } else if (items[i].equals("Cancel")){
+                    dialogInterface.dismiss();
+                }
+            }
+        });
+        builder.show();
+    }
+
+    @Override
+
+    public  void  onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode,data);
+        if(resultCode==Activity.RESULT_OK){
+
+            if(resultCode==REQUEST_CAMERA){
+                Bundle bundle = data.getExtras();
+                final Bitmap bmp = (Bitmap) bundle.get("data");
+                ivImage.setImageBitmap(bmp);
+
+            }else if (requestCode==SELECT_IMAGE){
+                Uri selectImageUri = data.getData();
+                ivImage.setImageURI(selectImageUri);
+            }
+        }
     }
 
 
