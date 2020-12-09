@@ -68,12 +68,13 @@ public class Rating1 extends AppCompatActivity {
     static final String TAG = "NAVIGINE.Demo";
     long maxid=0;
     private static final int SELECT_IMAGE = 100;
+    private static final int REQUEST_IMAGE_CAPTURE = 101;
 
     ArrayList<String> list = new ArrayList<>();
     ArrayAdapter<String> adapter;
 
     ImageView ivImage;
-    Integer REQUEST_CAMERA=1, SELECT_FILE=0;
+    //Integer REQUEST_CAMERA=1, SELECT_FILE=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -203,9 +204,14 @@ public class Rating1 extends AppCompatActivity {
         builder.setItems(items, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
+
                 if(items[i].equals("Camera")){
                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                    startActivityForResult(intent, REQUEST_CAMERA);
+                    if(intent.resolveActivity(getPackageManager())!=null)
+                    {
+                        startActivityForResult(intent, REQUEST_IMAGE_CAPTURE);
+                    }
+
                 } else if (items[i].equals("Gallery")){
 //                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 //                    intent.setType("images/*");
@@ -223,17 +229,16 @@ public class Rating1 extends AppCompatActivity {
     }
 
     @Override
+    protected  void  onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == Activity.RESULT_OK) {
 
-    public  void  onActivityResult(int requestCode, int resultCode, Intent data){
-        super.onActivityResult(requestCode, resultCode,data);
-        if(resultCode==Activity.RESULT_OK){
-
-            if(resultCode==REQUEST_CAMERA){
+            if (resultCode == REQUEST_IMAGE_CAPTURE) {
                 Bundle bundle = data.getExtras();
-                final Bitmap bmp = (Bitmap) bundle.get("data");
+                Bitmap bmp = (Bitmap) bundle.get("data");
                 ivImage.setImageBitmap(bmp);
 
-            }else if (requestCode==SELECT_IMAGE){
+            } else if (requestCode == SELECT_IMAGE) {
                 Uri selectImageUri = data.getData();
                 ivImage.setImageURI(selectImageUri);
             }
