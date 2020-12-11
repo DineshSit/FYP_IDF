@@ -1,4 +1,5 @@
 package com.navigine.naviginedemo;
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -6,9 +7,12 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
@@ -28,6 +32,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.content.FileProvider;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -41,6 +48,7 @@ import com.navigine.naviginesdk.NavigineSDK;
 import com.navigine.naviginesdk.SubLocation;
 import com.navigine.naviginesdk.Venue;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -54,6 +62,7 @@ import com.google.firebase.database.DatabaseReference;
 
 
 public class Rating1 extends AppCompatActivity {
+    private static final String APP_TAG = "" ;
     SharedPreferences spref;
     EditText FeedMessage;
     Button SendFeed;
@@ -69,6 +78,7 @@ public class Rating1 extends AppCompatActivity {
     long maxid=0;
     private static final int SELECT_IMAGE = 100;
     private static final int REQUEST_IMAGE_CAPTURE = 101;
+
 
     ArrayList<String> list = new ArrayList<>();
     ArrayAdapter<String> adapter;
@@ -206,6 +216,7 @@ public class Rating1 extends AppCompatActivity {
             public void onClick(DialogInterface dialogInterface, int i) {
 
                 if(items[i].equals("Camera")){
+                    askCameraPermissions();
                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                     if(intent.resolveActivity(getPackageManager())!=null)
                     {
@@ -228,15 +239,33 @@ public class Rating1 extends AppCompatActivity {
         builder.show();
     }
 
+
+
+    private  void  askCameraPermissions(){
+        if(ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, REQUEST_IMAGE_CAPTURE);
+        };
+    }
+
     @Override
-    protected  void  onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected  void  onActivityResult(int requestCode, int resultCode,  Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
 
-            if (resultCode == REQUEST_IMAGE_CAPTURE) {
-                Bundle bundle = data.getExtras();
-                Bitmap bmp = (Bitmap) bundle.get("data");
-                ivImage.setImageBitmap(bmp);
+
+           if (requestCode == REQUEST_IMAGE_CAPTURE ) {
+
+               Bundle bundle = data.getExtras();
+                Bitmap finalPic = (Bitmap) bundle.get("data");
+
+                ivImage.setImageBitmap(finalPic);
+                //ivImage.invalidate();
+
+                // RESIZE BITMAP, see section below
+                // Load the taken image into a preview
+
+
+
 
             } else if (requestCode == SELECT_IMAGE) {
                 Uri selectImageUri = data.getData();
