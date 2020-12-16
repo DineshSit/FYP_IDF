@@ -13,6 +13,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
@@ -52,6 +53,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Member;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -84,6 +86,7 @@ public class Rating1 extends AppCompatActivity {
     ArrayAdapter<String> adapter;
 
     ImageView ivImage;
+    private Uri imageUri;
     //Integer REQUEST_CAMERA=1, SELECT_FILE=0;
 
     @Override
@@ -188,9 +191,10 @@ public class Rating1 extends AppCompatActivity {
 
                         database = FirebaseDatabase.getInstance();
                         ref = database.getReference("Reviews");
+                        String picture = imageUri.toString();
 
                         ReviewClass reviewclass = new ReviewClass(setLocation1, rate, fb);
-                        //ref.child(setLocation1).setValue(reviewclass); // set as key
+                       // ref.child(setLocation1).setValue(reviewclass); // set as key
                         ref.child(String.valueOf(maxid+1)).setValue(reviewclass);
 
                         spref = getSharedPreferences("MyUserProfile", MODE_PRIVATE);
@@ -199,12 +203,53 @@ public class Rating1 extends AppCompatActivity {
                         editor.putFloat("rating", rate);
                         editor.putString("feedback", fb);
                         editor.commit();
+                        UploadImage();
 
                         //ref.child(String.valueOf(maxid+1)).setValue(reviewclass);
                         Toast.makeText(Rating1.this, "Review submitted!", Toast.LENGTH_LONG).show();
                     }
                 });
     }
+
+    private void UploadImage()
+    {
+        try {
+            final InputStream imageStream = getContentResolver().openInputStream(this.imageUri);
+            final int imageLength = imageStream.available();
+
+            final Handler handler = new Handler();
+
+            Thread th = new Thread(new Runnable() {
+                public void run() {
+
+                    try {
+
+                        final String imageName = ImageManager.UploadImage(imageStream, imageLength);
+
+                        handler.post(new Runnable() {
+
+                            public void run() {
+                                Toast.makeText(Rating1.this, "Image Uploaded Successfully. Name = " + imageName, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                    catch(Exception ex) {
+                        final String exceptionMessage = ex.getMessage();
+                        handler.post(new Runnable() {
+                            public void run() {
+                                Toast.makeText(Rating1.this, exceptionMessage, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                }});
+            th.start();
+        }
+        catch(Exception ex) {
+
+            Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
 
     private void  SelectImage(){
         final CharSequence[] items = {"Camera","Gallery", "Cancel "};
@@ -268,8 +313,10 @@ public class Rating1 extends AppCompatActivity {
 
 
             } else if (requestCode == SELECT_IMAGE) {
-                Uri selectImageUri = data.getData();
-                ivImage.setImageURI(selectImageUri);
+//                Uri selectImageUri = data.getData();
+//                ivImage.setImageURI(selectImageUri);
+               this.imageUri = data.getData();
+               this.ivImage.setImageURI(this.imageUri);
             }
         }
     }

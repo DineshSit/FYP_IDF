@@ -1,5 +1,6 @@
 package com.navigine.naviginedemo;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.renderscript.Sampler;
 import android.widget.ArrayAdapter;
@@ -17,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +37,7 @@ public class DisplayReview extends AppCompatActivity {
     ArrayAdapter<String> adapter;
     ReviewClass reviewClass;
     static final String TAG = "NAVIGINE.Demo";
+    private Uri image3;
 
 
     //for recycler view
@@ -87,6 +90,9 @@ public class DisplayReview extends AppCompatActivity {
         database = FirebaseDatabase.getInstance();
         ref = database.getReference("Reviews");
         list = new ArrayList<>();
+
+//        final InputStream imageStream = getContentResolver().openInputStream(this.image3);
+//        final int imageLength = imageStream.available();
         adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, list);
         ref.addValueEventListener(new ValueEventListener() {
             @Override
