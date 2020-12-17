@@ -205,8 +205,10 @@ public class Rating1 extends AppCompatActivity {
                         editor.commit();
                         UploadImage();
 
+
                         //ref.child(String.valueOf(maxid+1)).setValue(reviewclass);
                         Toast.makeText(Rating1.this, "Review submitted!", Toast.LENGTH_LONG).show();
+                        startActivity(new Intent(getApplicationContext(), DisplayReview.class));
                     }
                 });
     }

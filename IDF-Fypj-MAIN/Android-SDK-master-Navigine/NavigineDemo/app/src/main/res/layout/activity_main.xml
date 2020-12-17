@@ -99,8 +99,8 @@
                 <Button
 
                     android:id="@+id/btnGotoLocation"
-                    android:layout_width="109dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="99dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
                     android:background="@drawable/greenround"
                     android:fontFamily="@font/hammersmith_one"
@@ -115,8 +115,8 @@
                 <Button
 
                     style="@style/Widget.AppCompat.Button"
-                    android:layout_width="130dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="106dp"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/blueround"
                     android:onClick="ClickVenueList"
                     android:text="MENU"
