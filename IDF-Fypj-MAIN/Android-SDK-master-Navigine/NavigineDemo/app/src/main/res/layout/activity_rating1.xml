@@ -14,18 +14,19 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Write Review"
-        android:textColor="#000000"
+        android:text="Review"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:visibility="visible" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Select Location"
-        android:textColor="#000000"
-        android:textSize="18sp"/>
+        android:textColor="#373434"
+        android:textSize="18sp" />
 
 <!--    <Spinner-->
 <!--        android:id="@+id/spinnerLoc"-->
@@ -45,7 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Rating"
-        android:textColor="#000000"
+        android:textColor="#1E1C1C"
         android:textSize="18sp" />
 
     <RatingBar
@@ -74,14 +75,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Feedback"
-        android:textColor="#000000"
+        android:textColor="#3E3B3B"
         android:textSize="18sp" />
 
     <EditText
         android:id="@+id/FeedMessage"
         android:layout_width="match_parent"
-        android:layout_height="63dp"
-        android:hint="Share details of own experience at this place" />
+        android:layout_height="wrap_content"
+        android:hint="Share details of own experience at this place"
+        android:textColor="@color/colorAccent" />
 
     <Button
         android:id="@+id/sendFeed"
